@@ -57,7 +57,7 @@ const Home: NextPage = () => {
                 {coin?.current_price}
               </td>
               <td className="border-y border-slate-500 text-left">
-                {coin?.price_change_percentage_24h}
+                <span className={`${coin?.price_change_percentage_24h > 0 ? "text-green-400" : "text-red-400" }`}>{`${coin?.price_change_percentage_24h.toFixed(2)}%`}</span>
               </td>
             </tr>
           ))}
