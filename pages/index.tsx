@@ -18,7 +18,7 @@ const Home: NextPage = () => {
   console.log(topCoins)
 
   return (
-    <div className="pb-16">
+    <div className="pb-16 font-['Inter']">
       <Navbar />
       <div className="fixed left-0 bottom-0 -z-10 h-20 w-20 rounded-full bg-pink-500 blur-3xl"></div>
       <div className="fixed right-0 bottom-0 -z-10 h-16 w-16 rounded-full bg-emerald-500 blur-2xl"></div>
@@ -38,7 +38,9 @@ const Home: NextPage = () => {
           {topCoins.map((coin: any, index: number) => (
             <tr
               className="cursor-pointer transition duration-300 ease-in-out hover:bg-sky-500/5"
-              onClick={() => (location.href = `/crypto/${coin?.name.toLowerCase()}`)}
+              onClick={() =>
+                (location.href = `/crypto/${coin?.name.toLowerCase()}`)
+              }
             >
               <td className="border-y border-slate-600 py-5 pl-3 text-left">
                 {index + 1}
