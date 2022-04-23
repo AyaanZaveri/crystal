@@ -36,7 +36,10 @@ const Home: NextPage = () => {
             <th className="py-3 text-left">Volume</th>
           </tr>
           {topCoins.map((coin: any, index: number) => (
-            <tr className="cursor-pointer hover:bg-sky-500/5 transition ease-in-out duration-300">
+            <tr
+              className="cursor-pointer transition duration-300 ease-in-out hover:bg-sky-500/5"
+              onClick={() => (location.href = `/crypto/${coin?.name.toLowerCase()}`)}
+            >
               <td className="border-y border-slate-600 py-5 pl-3 text-left">
                 {index + 1}
               </td>
