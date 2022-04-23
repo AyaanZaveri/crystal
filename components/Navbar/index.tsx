@@ -4,8 +4,9 @@ import BlueBlur from '../../public/blur-blue.svg'
 const Navbar = () => {
   return (
     <div className="h-20 w-full overflow-hidden border-b border-slate-600 font-['Inter']">
-      <BlueBlur className="absolute left-0 h-20" />
-      <BlueBlur className="absolute right-0 -z-10 h-20 -scale-x-[1]" />
+      <div className="absolute left-0 -z-10 h-24 w-24 rounded-full bg-sky-500 blur-3xl"></div>
+      <div className="absolute right-0 -z-10 h-16 w-16 -scale-x-[1] rounded-full bg-sky-500 blur-2xl"></div>
+
       <div className="flex h-full w-full items-center justify-between px-8">
         <h1 className="font-mono text-2xl text-white">Crystal</h1>
         <input
