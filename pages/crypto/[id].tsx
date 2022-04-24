@@ -104,8 +104,20 @@ const CryptoID = ({ cryptoData, chartData }: any) => {
               ],
             }}
             options={{
+              plugins: {
+                legend: {
+                  labels: {
+                    color: 'white',
+                  },
+                },
+              },
               scales: {
                 y: {
+                  ticks: {
+                    color: 'white',
+                  },
+                },
+                x: {
                   ticks: {
                     color: 'white',
                   },
