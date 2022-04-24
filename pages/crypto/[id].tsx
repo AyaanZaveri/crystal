@@ -116,10 +116,16 @@ const CryptoID = ({ cryptoData, chartData }: any) => {
                   ticks: {
                     color: 'white',
                   },
+                  grid: {
+                    color: '#475569',
+                  },
                 },
                 x: {
                   ticks: {
                     color: 'white',
+                  },
+                  grid: {
+                    color: '#475569',
                   },
                 },
               },
