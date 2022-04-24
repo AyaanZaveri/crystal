@@ -53,7 +53,7 @@ const Navbar = () => {
               <input
                 placeholder="Search..."
                 onChange={(e) => setInput(e.target.value)}
-                className="w-72 rounded-md bg-slate-800 py-2 px-4 pl-8 text-sm text-white placeholder-slate-400 transition duration-300 ease-in-out focus:outline-none focus:ring-2 focus:ring-sky-500 focus:ring-offset-1 focus:ring-offset-sky-700 active:bg-slate-900"
+                className="w-72 rounded-md bg-slate-800/50 py-2 px-4 pl-8 text-sm text-white placeholder-slate-400 backdrop-blur-sm transition duration-300 ease-in-out hover:bg-slate-800/30 focus:outline-none focus:ring-2 focus:ring-sky-500 focus:ring-offset-1 focus:ring-offset-sky-700 active:bg-slate-900"
               />
               <HiSearch
                 className={`absolute ml-2.5 text-2xl ${
@@ -62,12 +62,14 @@ const Navbar = () => {
               />
             </div>
             {searchRes.length > 0 && input.length > 0 ? (
-              <ul className="absolute mt-3 w-72 overflow-hidden rounded-lg bg-slate-900/80 shadow-xl backdrop-blur">
+              <ul className="absolute mt-3 w-72 overflow-hidden rounded-lg bg-slate-900/80 shadow-xl backdrop-blur-sm">
                 {searchRes?.map((res: any) => (
                   <li
                     className="flex cursor-pointer items-center overflow-hidden p-3 text-white transition duration-300 ease-in-out hover:bg-sky-500/5"
                     onClick={() =>
-                      (location.href = `/crypto/${res?.name.toLowerCase()}`)
+                      (location.href = `/crypto/${res?.name
+                        .toLowerCase()
+                        .replace(/ /g, '-')}`)
                     }
                   >
                     <div className="inline-flex items-center gap-2">

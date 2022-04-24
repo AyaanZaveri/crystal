@@ -39,7 +39,9 @@ const Home: NextPage = () => {
             <tr
               className="cursor-pointer transition duration-300 ease-in-out hover:bg-sky-500/5"
               onClick={() =>
-                (location.href = `/crypto/${coin?.name.toLowerCase()}`)
+                (location.href = `/crypto/${coin?.name
+                  .toLowerCase()
+                  .replace(/ /g, '-')}`)
               }
             >
               <td className="border-y border-slate-600 py-5 pl-3 text-left">
