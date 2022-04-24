@@ -57,7 +57,7 @@ const Home: NextPage = () => {
                     alt=""
                   />
                   <span>{coin?.name}</span>
-                  <span className="h-min cursor-default rounded-sm bg-slate-800 px-1.5 text-sm text-slate-400 duration-300 hover:bg-sky-500 hover:text-white">
+                  <span className="h-min cursor-default rounded bg-slate-800 px-1.5 text-sm text-slate-400 duration-300 hover:bg-sky-500 hover:text-white">
                     {coin?.symbol?.toUpperCase()}
                   </span>
                 </div>

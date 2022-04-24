@@ -21,7 +21,7 @@ const Navbar = () => {
 
   return (
     <div className="flex flex-col">
-      <div className="flex h-8 w-full items-center border-b border-slate-600 font-['Inter']">
+      <div className="flex h-10 w-full items-center border-b border-slate-600 font-['Inter']">
         <span className="ml-8 font-mono font-medium text-white text-sm">{ethGas}</span>
       </div>
       <div className="h-20 w-full border-b border-slate-600 font-['Inter']">
@@ -57,7 +57,7 @@ const Navbar = () => {
                       />
                       <span>{res?.name}</span>
 
-                      <span className="h-min cursor-default rounded-sm bg-slate-800 px-1.5 text-sm text-slate-400 duration-300 hover:bg-sky-500 hover:text-white">
+                      <span className="h-min cursor-default rounded bg-slate-800 px-1.5 text-sm text-slate-400 duration-300 hover:bg-sky-500 hover:text-white">
                         {res?.symbol?.toUpperCase()}
                       </span>
                     </div>

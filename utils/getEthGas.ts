@@ -7,5 +7,5 @@ export const getEthGas = async (): Promise<string> => {
   const data = res.data
   const { fast, safeLow } = data
   const gasPrice = fast ? String(fast / 10) : String(safeLow / 10)
-  return '⛽️ ' + gasPrice + ' GWEI'
+  return '⛽️ ~ ' + gasPrice + ' GWEI'
 }
