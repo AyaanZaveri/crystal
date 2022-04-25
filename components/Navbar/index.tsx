@@ -31,7 +31,7 @@ const Navbar = () => {
 
   return (
     <div className="flex flex-col">
-      <div className="flex h-10 w-full items-center border-b border-slate-600 font-['Inter']">
+      <div className="flex h-10 w-full items-center border-b border-slate-600 ">
         <span className="ml-8 font-mono text-sm font-medium text-white">
           {date}
         </span>
@@ -42,7 +42,7 @@ const Navbar = () => {
           {ethGas}
         </span>
       </div>
-      <div className="h-20 w-full border-b border-slate-600 font-['Inter']">
+      <div className="h-20 w-full border-b border-slate-600">
         <div className="absolute left-0 -z-10 h-24 w-24 rounded-full bg-sky-500 blur-3xl"></div>
         <div className="absolute right-0 -z-10 h-16 w-16 rounded-full bg-purple-500 blur-2xl"></div>
 
