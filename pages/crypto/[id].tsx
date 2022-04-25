@@ -115,23 +115,23 @@ const CryptoID = ({ cryptoData, chartData }: any) => {
                       color: 'white',
                     },
                   },
-                  grid: {
-                    color: '#475569',
-                  },
                 },
                 scales: {
                   y: {
                     ticks: {
                       color: 'white',
                     },
+                    grid: {
+                      color: '#475569',
+                    },
                   },
                   x: {
                     ticks: {
                       color: 'white',
                     },
-                  },
-                  grid: {
-                    color: '#475569',
+                    grid: {
+                      color: '#475569',
+                    },
                   },
                 },
               }}
@@ -143,8 +143,8 @@ const CryptoID = ({ cryptoData, chartData }: any) => {
           <div className="flex flex-row items-center gap-3">
             <span className="text-slate-300">Website</span>
             <a target="_blank" href={cryptoData?.links?.homepage[0]}>
-            <span className="inline-flex h-min cursor-pointer items-center gap-1 rounded bg-slate-800 px-1.5 text-sm text-slate-400 duration-300 hover:bg-emerald-500 hover:text-white">
-              <HiOutlineGlobeAlt className="h-3 w-3 text-slate-300" />
+              <span className="inline-flex h-min cursor-pointer items-center gap-1 rounded bg-slate-800 px-1.5 text-sm text-slate-400 duration-300 hover:bg-emerald-500 hover:text-white">
+                <HiOutlineGlobeAlt className="h-3 w-3 text-slate-300" />
                 {cryptoData?.links?.homepage[0]}
               </span>
             </a>
