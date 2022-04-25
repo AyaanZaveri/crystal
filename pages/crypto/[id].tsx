@@ -17,6 +17,8 @@ import {
   Legend,
 } from 'chart.js'
 import { Line } from 'react-chartjs-2'
+import { SiReddit, SiTwitter } from 'react-icons/si'
+import { HiOutlineGlobeAlt } from 'react-icons/hi'
 
 ChartJS.register(
   CategoryScale,
@@ -132,11 +134,34 @@ const CryptoID = ({ cryptoData, chartData }: any) => {
         </div>
         <div className="flex flex-col gap-3">
           <h1 className="text-2xl font-bold text-white">Information</h1>
-          <div className="flex flex-row gap-3 items-center">
+          <div className="flex flex-row items-center gap-3">
             <span className="text-slate-300">Website</span>
-            <a href={cryptoData?.links?.homepage[0]}><span className="h-min cursor-default rounded bg-slate-800 px-1.5 text-sm text-slate-400 duration-300 hover:bg-sky-500 hover:text-white">
-              {cryptoData?.links?.homepage[0]}
-            </span></a>
+            <a target="_blank" href={cryptoData?.links?.homepage[0]}>
+            <span className="inline-flex h-min cursor-pointer items-center gap-1 rounded bg-slate-800 px-1.5 text-sm text-slate-400 duration-300 hover:bg-emerald-500 hover:text-white">
+              <HiOutlineGlobeAlt className="h-3 w-3 text-slate-300" />
+                {cryptoData?.links?.homepage[0]}
+              </span>
+            </a>
+          </div>
+          <div className="flex flex-row items-center gap-2">
+            <span className="text-slate-300">Community</span>
+            <a target="_blank" href={cryptoData?.links?.subreddit_url}>
+              <span className="inline-flex h-min cursor-pointer items-center gap-1 rounded bg-slate-800 px-1.5 text-sm text-slate-400 duration-300 hover:bg-orange-500 hover:text-white">
+                <SiReddit className="h-3 w-3 text-slate-300" />
+                Reddit
+              </span>
+            </a>
+            <a
+              target="_blank"
+              href={
+                'https://twitter.com/' + cryptoData?.links?.twitter_screen_name
+              }
+            >
+              <span className="inline-flex h-min cursor-pointer items-center gap-1 rounded bg-slate-800 px-1.5 text-sm text-slate-400 duration-300 hover:bg-sky-500 hover:text-white">
+                <SiTwitter className="h-3 w-3 text-slate-300" />
+                Twitter
+              </span>
+            </a>
           </div>
         </div>
       </div>
