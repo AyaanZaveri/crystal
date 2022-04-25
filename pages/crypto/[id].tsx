@@ -46,13 +46,13 @@ const CryptoID = ({ cryptoData, chartData }: any) => {
   console.log(chartX)
 
   return (
-    <div>
+    <div className="pb-16">
       <Navbar />
       <div className="fixed left-0 bottom-0 -z-10 h-20 w-20 rounded-full bg-pink-500 blur-3xl"></div>
       <div className="fixed right-0 bottom-0 -z-10 h-16 w-16 rounded-full bg-emerald-500 blur-2xl"></div>
-      <div className="flex flex-row px-8">
-        <div className="flex w-full flex-col gap-3">
-          <div className="mt-8 inline-flex items-center gap-2">
+      <div className="mt-8 flex flex-row flex-wrap px-8">
+        <div className="flex w-full flex-col gap-3 md:w-8/12">
+          <div className="inline-flex items-center gap-2">
             <img
               className="w-8 rounded-full transition duration-300 ease-in-out hover:rotate-12"
               src={
@@ -93,7 +93,7 @@ const CryptoID = ({ cryptoData, chartData }: any) => {
             </h1>
           </div>
 
-          <div className="md:w-6/12">
+          <div>
             <Line
               data={{
                 labels: chartX,
@@ -130,8 +130,14 @@ const CryptoID = ({ cryptoData, chartData }: any) => {
             />
           </div>
         </div>
-        <div>
+        <div className="flex flex-col gap-3">
           <h1 className="text-2xl font-bold text-white">Information</h1>
+          <div className="flex flex-row gap-3 items-center">
+            <span className="text-slate-300">Website</span>
+            <a href={cryptoData?.links?.homepage[0]}><span className="h-min cursor-default rounded bg-slate-800 px-1.5 text-sm text-slate-400 duration-300 hover:bg-sky-500 hover:text-white">
+              {cryptoData?.links?.homepage[0]}
+            </span></a>
+          </div>
         </div>
       </div>
     </div>

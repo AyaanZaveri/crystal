@@ -49,7 +49,7 @@ const Navbar = () => {
         <div className="flex h-full w-full items-center justify-between px-8">
           <h1 className="font-mono text-2xl text-white">Crystal</h1>
           <div>
-            <div className="flex items-center">
+            <div className="flex items-center relative">
               <input
                 placeholder="Search..."
                 onChange={(e) => setInput(e.target.value)}
