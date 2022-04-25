@@ -53,7 +53,7 @@ const CryptoID = ({ cryptoData, chartData }: any) => {
       <div className="fixed left-0 bottom-0 -z-10 h-20 w-20 rounded-full bg-pink-500 blur-3xl"></div>
       <div className="fixed right-0 bottom-0 -z-10 h-16 w-16 rounded-full bg-emerald-500 blur-2xl"></div>
       <div className="mt-8 flex flex-row flex-wrap px-8">
-        <div className="flex w-full flex-col gap-3 md:w-8/12">
+        <div className="flex w-full flex-col gap-3 md:w-8/12 pr-8">
           <div className="inline-flex items-center gap-2">
             <img
               className="w-8 rounded-full transition duration-300 ease-in-out hover:rotate-12"
