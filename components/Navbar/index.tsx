@@ -3,6 +3,8 @@ import { getEthGas } from '../../utils/getEthGas'
 import { getSearch } from '../../utils/getSearch'
 import { DateTime } from 'luxon'
 import { HiSearch } from 'react-icons/hi'
+import { auth, provider } from '../../firebase'
+import { signInWithPopup } from 'firebase/auth'
 
 const Navbar = () => {
   const [input, setInput] = useState('')
@@ -31,7 +33,7 @@ const Navbar = () => {
 
   return (
     <div className="flex flex-col">
-      <div className="flex h-12 w-full items-center justify-between border-b border-slate-600 px-8 ">
+      <div className="flex h-10 w-full items-center justify-between border-b border-slate-600 px-8 ">
         <div className="flex flex-row gap-8">
           <span className="font-mono text-sm font-medium text-white">
             {date}
@@ -43,8 +45,14 @@ const Navbar = () => {
             {ethGas}
           </span>
         </div>
-        <button className="rounded-md items-center gap-2 inline-flex bg-slate-800/50 px-3 py-1.5 text-sm text-white placeholder-slate-400 backdrop-blur-sm transition duration-300 ease-in-out hover:bg-slate-800/30 focus:outline-none focus:ring-2 focus:ring-sky-500 focus:ring-offset-1 focus:ring-offset-sky-700 active:bg-slate-900">
-          <img className='w-3 h-3' src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg" />
+        <button
+          onClick={() => signInWithPopup(auth, provider)}
+          className="inline-flex items-center gap-2 rounded-md bg-slate-800/50 px-3 py-1.5 text-xs text-white placeholder-slate-400 backdrop-blur-sm transition duration-300 ease-in-out hover:bg-slate-800/30 focus:outline-none focus:ring-2 focus:ring-sky-500 focus:ring-offset-1 focus:ring-offset-sky-700 active:bg-slate-900"
+        >
+          <img
+            className="h-3 w-3"
+            src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg"
+          />
           Sign-In with Google
         </button>
       </div>
