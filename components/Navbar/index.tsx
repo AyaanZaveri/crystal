@@ -31,16 +31,22 @@ const Navbar = () => {
 
   return (
     <div className="flex flex-col">
-      <div className="flex h-10 w-full items-center border-b border-slate-600 ">
-        <span className="ml-8 font-mono text-sm font-medium text-white">
-          {date}
-        </span>
-        <span className="ml-8 font-mono text-sm font-medium text-white">
-          {time}
-        </span>
-        <span className="ml-8 font-mono text-sm font-medium text-white">
-          {ethGas}
-        </span>
+      <div className="flex h-12 w-full items-center justify-between border-b border-slate-600 px-8 ">
+        <div className="flex flex-row gap-8">
+          <span className="font-mono text-sm font-medium text-white">
+            {date}
+          </span>
+          <span className="font-mono text-sm font-medium text-white">
+            {time}
+          </span>
+          <span className="font-mono text-sm font-medium text-white">
+            {ethGas}
+          </span>
+        </div>
+        <button className="rounded-md items-center gap-2 inline-flex bg-slate-800/50 px-3 py-1.5 text-sm text-white placeholder-slate-400 backdrop-blur-sm transition duration-300 ease-in-out hover:bg-slate-800/30 focus:outline-none focus:ring-2 focus:ring-sky-500 focus:ring-offset-1 focus:ring-offset-sky-700 active:bg-slate-900">
+          <img className='w-3 h-3' src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg" />
+          Sign-In with Google
+        </button>
       </div>
       <div className="h-20 w-full border-b border-slate-600">
         <div className="absolute left-0 -z-10 h-24 w-24 rounded-full bg-sky-500 blur-3xl"></div>
@@ -49,7 +55,7 @@ const Navbar = () => {
         <div className="flex h-full w-full items-center justify-between px-8">
           <h1 className="font-mono text-2xl text-white">Crystal</h1>
           <div>
-            <div className="flex items-center relative">
+            <div className="relative flex items-center">
               <input
                 placeholder="Search..."
                 onChange={(e) => setInput(e.target.value)}
