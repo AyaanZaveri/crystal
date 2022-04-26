@@ -10,11 +10,13 @@
     "axios": "^0.26.1",
     "chart.js": "^3.7.1",
     "cheerio": "^1.0.0-rc.10",
+    "firebase": "^9.6.11",
     "luxon": "^2.3.2",
     "next": "latest",
     "react": "^17.0.2",
     "react-chartjs-2": "^4.1.0",
     "react-dom": "^17.0.2",
+    "react-firebase-hooks": "^5.0.3",
     "react-icons": "^4.3.1"
   },
   "devDependencies": {

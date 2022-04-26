@@ -2,9 +2,10 @@ import React, { useEffect, useState } from 'react'
 import { getEthGas } from '../../utils/getEthGas'
 import { getSearch } from '../../utils/getSearch'
 import { DateTime } from 'luxon'
-import { HiSearch } from 'react-icons/hi'
+import { HiOutlineUserCircle, HiSearch } from 'react-icons/hi'
 import { auth, provider } from '../../firebase'
-import { signInWithPopup } from 'firebase/auth'
+import { signInWithPopup, signOut } from 'firebase/auth'
+import { useAuthState } from 'react-firebase-hooks/auth'
 
 const Navbar = () => {
   const [input, setInput] = useState('')
@@ -12,6 +13,7 @@ const Navbar = () => {
   const [ethGas, setEthGas] = useState<string>('')
   const [time, setTime] = useState<string>('')
   const [date, setDate] = useState<string>('')
+  const [user, loading] = useAuthState(auth)
 
   useEffect(() => {
     getSearch(input).then((res: any) => {
@@ -45,16 +47,26 @@ const Navbar = () => {
             {ethGas}
           </span>
         </div>
-        <button
-          onClick={() => signInWithPopup(auth, provider)}
-          className="inline-flex items-center gap-2 rounded-md bg-slate-800/50 px-3 py-1.5 text-xs text-white placeholder-slate-400 backdrop-blur-sm transition duration-300 ease-in-out hover:bg-slate-800/30 focus:outline-none focus:ring-2 focus:ring-sky-500 focus:ring-offset-1 focus:ring-offset-sky-700 active:bg-slate-900"
-        >
-          <img
-            className="h-3 w-3"
-            src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg"
-          />
-          Sign-In with Google
-        </button>
+        {user ? (
+          <button
+            onClick={() => signOut(auth)}
+            className="inline-flex items-center gap-2 rounded-md bg-slate-800/50 px-2 py-1.5 text-xs text-white placeholder-slate-400 backdrop-blur-sm transition duration-300 ease-in-out hover:bg-slate-800/30 focus:outline-none focus:ring-2 focus:ring-sky-500 focus:ring-offset-1 focus:ring-offset-sky-700 active:bg-slate-900"
+          >
+            <HiOutlineUserCircle className="h-4 w-4" />
+            {user?.displayName}
+          </button>
+        ) : (
+          <button
+            onClick={() => signInWithPopup(auth, provider)}
+            className="inline-flex items-center gap-2 rounded-md bg-slate-800/50 px-3 py-1.5 text-xs text-white placeholder-slate-400 backdrop-blur-sm transition duration-300 ease-in-out hover:bg-slate-800/30 focus:outline-none focus:ring-2 focus:ring-sky-500 focus:ring-offset-1 focus:ring-offset-sky-700 active:bg-slate-900"
+          >
+            <img
+              className="h-3 w-3"
+              src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg"
+            />
+            Sign-In with Google
+          </button>
+        )}
       </div>
       <div className="h-20 w-full border-b border-slate-600">
         <div className="absolute left-0 -z-10 h-24 w-24 rounded-full bg-sky-500 blur-3xl"></div>
