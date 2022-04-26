@@ -61,7 +61,9 @@ const Home: NextPage = () => {
                     alt=""
                   />
                   <span>{coin?.name}</span>
-                  <span className={`h-min cursor-default rounded bg-slate-800 px-1.5 text-sm text-slate-400 duration-300 hover:bg-sky-500 hover:text-white`}>
+                  <span
+                    className={`h-min cursor-default rounded bg-slate-800 px-1.5 text-sm text-slate-400 duration-300 hover:bg-sky-500 hover:text-white`}
+                  >
                     {coin?.symbol?.toUpperCase()}
                   </span>
                 </div>
@@ -88,6 +90,16 @@ const Home: NextPage = () => {
           ))}
         </table>
         <div className="mt-4 flex flex-row items-center justify-center gap-2">
+          <button
+            className="grid h-8 w-8 place-items-center rounded-md bg-slate-800/50 text-sm text-white placeholder-slate-400 backdrop-blur-sm transition duration-300 ease-in-out hover:bg-slate-800/30 focus:outline-none focus:ring-2 focus:ring-sky-500 focus:ring-offset-1 focus:ring-offset-sky-700 active:bg-slate-900"
+            onClick={() =>
+              currentTopPage == 1
+                ? setCurrentTopPage(1)
+                : setCurrentTopPage(currentTopPage - 1)
+            }
+          >
+            <FaCaretLeft className="h-4 w-4" />
+          </button>
           <button
             className="h-8 w-8 rounded-md bg-slate-800/50 text-sm text-white placeholder-slate-400 backdrop-blur-sm transition duration-300 ease-in-out hover:bg-slate-800/30 focus:outline-none focus:ring-2 focus:ring-sky-500 focus:ring-offset-1 focus:ring-offset-sky-700 active:bg-slate-900"
             onClick={() => setCurrentTopPage(1)}
@@ -117,16 +129,6 @@ const Home: NextPage = () => {
             onClick={() => setCurrentTopPage(5)}
           >
             5
-          </button>
-          <button
-            className="grid h-8 w-8 place-items-center rounded-md bg-slate-800/50 text-sm text-white placeholder-slate-400 backdrop-blur-sm transition duration-300 ease-in-out hover:bg-slate-800/30 focus:outline-none focus:ring-2 focus:ring-sky-500 focus:ring-offset-1 focus:ring-offset-sky-700 active:bg-slate-900"
-            onClick={() =>
-              currentTopPage == 1
-                ? setCurrentTopPage(1)
-                : setCurrentTopPage(currentTopPage - 1)
-            }
-          >
-            <FaCaretLeft className="h-4 w-4" />
           </button>
           <button
             className="grid h-8 w-8 place-items-center rounded-md bg-slate-800/50 text-sm text-white placeholder-slate-400 backdrop-blur-sm transition duration-300 ease-in-out hover:bg-slate-800/30 focus:outline-none focus:ring-2 focus:ring-sky-500 focus:ring-offset-1 focus:ring-offset-sky-700 active:bg-slate-900"
