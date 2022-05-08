@@ -160,36 +160,46 @@ const CryptoID = ({ cryptoData, chartData }: any) => {
               </a>
             </div>
           ) : null}
-          <div className="flex flex-row items-center gap-2">
-            <span className="text-slate-300">Community</span>
-            <a target="_blank" href={cryptoData?.links?.subreddit_url}>
-              <span className="inline-flex h-min cursor-pointer items-center gap-1 rounded bg-slate-800 px-1.5 text-sm text-slate-400 duration-300 hover:bg-orange-500 hover:text-white">
-                <SiReddit className="h-3 w-3" />
-                Reddit
-              </span>
-            </a>
-            <a
-              target="_blank"
-              href={
-                'https://twitter.com/' + cryptoData?.links?.twitter_screen_name
-              }
-            >
-              <span className="inline-flex h-min cursor-pointer items-center gap-1 rounded bg-slate-800 px-1.5 text-sm text-slate-400 duration-300 hover:bg-sky-500 hover:text-white">
-                <SiTwitter className="h-3 w-3" />
-                Twitter
-              </span>
-            </a>
-          </div>
+          {cryptoData?.links?.twitter_screen_name ||
+          cryptoData?.links?.subreddit_url ? (
+            <div className="flex flex-row items-center gap-2">
+              <span className="text-slate-300">Community</span>
+              {cryptoData?.links?.subreddit_url ? (
+                <a target="_blank" href={cryptoData?.links?.subreddit_url}>
+                  <span className="inline-flex h-min cursor-pointer items-center gap-1 rounded bg-slate-800 px-1.5 text-sm text-slate-400 duration-300 hover:bg-orange-500 hover:text-white">
+                    <SiReddit className="h-3 w-3" />
+                    Reddit
+                  </span>
+                </a>
+              ) : null}
+              {cryptoData?.links?.twitter_screen_name ? (
+                <a
+                  target="_blank"
+                  href={
+                    'https://twitter.com/' +
+                    cryptoData?.links?.twitter_screen_name
+                  }
+                >
+                  <span className="inline-flex h-min cursor-pointer items-center gap-1 rounded bg-slate-800 px-1.5 text-sm text-slate-400 duration-300 hover:bg-sky-500 hover:text-white">
+                    <SiTwitter className="h-3 w-3" />
+                    Twitter
+                  </span>
+                </a>
+              ) : null}
+            </div>
+          ) : null}
 
-          <div className="flex flex-row items-center gap-2">
-            <span className="text-slate-300">Origin Date</span>
-            <span className="inline-flex h-min cursor-pointer items-center gap-1 rounded bg-slate-800 px-1.5 text-sm text-slate-400 duration-300 hover:bg-pink-500 hover:text-white">
-              <HiOutlineCalendar className="h-3 w-3" />
-              {DateTime.fromISO(cryptoData?.genesis_date).toLocaleString(
-                DateTime.DATE_FULL
-              )}
-            </span>
-          </div>
+          {cryptoData?.genesis_date ? (
+            <div className="flex flex-row items-center gap-2">
+              <span className="text-slate-300">Origin Date</span>
+              <span className="inline-flex h-min cursor-pointer items-center gap-1 rounded bg-slate-800 px-1.5 text-sm text-slate-400 duration-300 hover:bg-pink-500 hover:text-white">
+                <HiOutlineCalendar className="h-3 w-3" />
+                {DateTime.fromISO(cryptoData?.genesis_date).toLocaleString(
+                  DateTime.DATE_FULL
+                )}
+              </span>
+            </div>
+          ) : null}
         </div>
       </div>
     </div>
@@ -209,8 +219,10 @@ export async function getServerSideProps(context: any) {
 
   return {
     props: {
-      cryptoData: cryptoData ? JSON.stringify(cryptoData) : "Empty cryptoData",
-      chartData: chartData ? JSON.stringify(chartData.prices) : "Empty chartData",
+      cryptoData: cryptoData ? JSON.stringify(cryptoData) : 'Empty cryptoData',
+      chartData: chartData
+        ? JSON.stringify(chartData.prices)
+        : 'Empty chartData',
     },
   }
 }
