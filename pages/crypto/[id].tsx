@@ -34,6 +34,7 @@ ChartJS.register(
 
 const CryptoID = ({ cryptoData, chartData }: any) => {
   const router = useRouter()
+  const [chartDays, setChartDays] = useState(7)
 
   const unixToDate = (unix: number) => {
     return DateTime.fromMillis(unix).toFormat('MMMM dd, yyyy')
@@ -85,21 +86,21 @@ const CryptoID = ({ cryptoData, chartData }: any) => {
 
           <div className="inline-flex items-center gap-1">
             <h1 className="text-3xl font-bold text-white">
-              {formatPrice(cryptoData?.market_data.current_price.usd)}
+              {formatPrice(cryptoData?.market_data?.current_price.usd)}
             </h1>
-            {cryptoData?.market_data.price_change_percentage_24h > 0 ? (
+            {cryptoData?.market_data?.price_change_percentage_24h > 0 ? (
               <FaCaretUp className="h-8 w-8 text-green-400" />
             ) : (
               <FaCaretDown className="h-8 w-8 text-red-400" />
             )}
             <h1
               className={`text-xl font-bold ${
-                cryptoData?.market_data.price_change_percentage_24h > 0
+                cryptoData?.market_data?.price_change_percentage_24h > 0
                   ? 'text-green-400'
                   : 'text-red-400'
               }`}
             >
-              {cryptoData?.market_data.price_change_percentage_24h.toFixed(2)}
+              {cryptoData?.market_data?.price_change_percentage_24h?.toFixed(2)}
             </h1>
           </div>
 
@@ -148,15 +149,17 @@ const CryptoID = ({ cryptoData, chartData }: any) => {
         </div>
         <div className="flex flex-col gap-3">
           <h1 className="text-2xl font-bold text-white">Information</h1>
-          <div className="flex flex-row items-center gap-3">
-            <span className="text-slate-300">Website</span>
-            <a target="_blank" href={cryptoData?.links?.homepage[0]}>
-              <span className="inline-flex h-min cursor-pointer items-center gap-1 rounded bg-slate-800 px-1.5 text-sm text-slate-400 duration-300 hover:bg-emerald-500 hover:text-white">
-                <HiOutlineGlobeAlt className="h-3 w-3" />
-                {cryptoData?.links?.homepage[0]}
-              </span>
-            </a>
-          </div>
+          {cryptoData?.links?.homepage[0] ? (
+            <div className="flex flex-row items-center gap-3">
+              <span className="text-slate-300">Website</span>
+              <a target="_blank" href={cryptoData?.links?.homepage[0]}>
+                <span className="inline-flex h-min cursor-pointer items-center gap-1 rounded bg-slate-800 px-1.5 text-sm text-slate-400 duration-300 hover:bg-emerald-500 hover:text-white">
+                  <HiOutlineGlobeAlt className="h-3 w-3" />
+                  {cryptoData?.links?.homepage[0]}
+                </span>
+              </a>
+            </div>
+          ) : null}
           <div className="flex flex-row items-center gap-2">
             <span className="text-slate-300">Community</span>
             <a target="_blank" href={cryptoData?.links?.subreddit_url}>
@@ -206,8 +209,8 @@ export async function getServerSideProps(context: any) {
 
   return {
     props: {
-      cryptoData: JSON.stringify(cryptoData),
-      chartData: JSON.stringify(chartData.prices),
+      cryptoData: cryptoData ? JSON.stringify(cryptoData) : "Empty cryptoData",
+      chartData: chartData ? JSON.stringify(chartData.prices) : "Empty chartData",
     },
   }
 }
