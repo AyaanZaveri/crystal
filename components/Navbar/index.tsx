@@ -3,6 +3,7 @@ import { getEthGas } from '../../utils/getEthGas'
 import { getSearch } from '../../utils/getSearch'
 import { DateTime } from 'luxon'
 import { HiOutlineUserCircle, HiSearch } from 'react-icons/hi'
+import { useRouter } from 'next/router'
 
 const Navbar = () => {
   const [input, setInput] = useState('')
@@ -29,6 +30,8 @@ const Navbar = () => {
     setDate(DateTime.local().toFormat('MMMM dd, yyyy'))
   }, [])
 
+  const router = useRouter()
+
   return (
     <div className="flex flex-col">
       <div className="flex h-10 w-full items-center justify-between border-b border-slate-600 px-8 ">
@@ -49,7 +52,12 @@ const Navbar = () => {
         <div className="absolute right-0 -z-10 h-16 w-16 rounded-full bg-purple-500 blur-2xl"></div>
 
         <div className="flex h-full w-full items-center justify-between px-8">
-          <h1 className="font-mono text-2xl text-white">Crystal</h1>
+          <h1
+            className="font-mono text-2xl text-white transition duration-300 ease-in-out hover:cursor-pointer hover:text-sky-200"
+            onClick={() => router.push('/')}
+          >
+            Crystal
+          </h1>
           <div>
             <div className="relative flex items-center">
               <input
@@ -69,9 +77,9 @@ const Navbar = () => {
                   <li
                     className="flex cursor-pointer items-center overflow-hidden p-3 text-white transition duration-300 ease-in-out hover:bg-sky-500/5"
                     onClick={() =>
-                      (location.href = `/crypto/${res?.name
-                        .toLowerCase()
-                        .replace(/ /g, '-')}`)
+                      router.push(
+                        `/crypto/${res?.name.toLowerCase().replace(/ /g, '-')}`
+                      )
                     }
                   >
                     <div className="inline-flex items-center gap-2">

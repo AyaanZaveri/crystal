@@ -8,6 +8,7 @@ import { HiOutlineStar } from 'react-icons/hi'
 import BlueBlur from '../public/blur-blue.svg'
 import { formatPrice } from '../utils/formatPrice'
 import { FaCaretLeft, FaCaretRight, FaChevronRight } from 'react-icons/fa'
+import { useRouter } from 'next/router'
 
 const Home: NextPage = () => {
   const [topCoins, setTopCoins] = useState([])
@@ -18,6 +19,8 @@ const Home: NextPage = () => {
   }, [currentTopPage])
 
   console.log(currentTopPage)
+
+  const router = useRouter()
 
   return (
     <div className="pb-16">
@@ -41,9 +44,9 @@ const Home: NextPage = () => {
             <tr
               className="cursor-pointer transition duration-300 ease-in-out hover:bg-sky-500/5"
               onClick={() =>
-                (location.href = `/crypto/${coin?.name
-                  .toLowerCase()
-                  .replace(/ /g, '-')}`)
+                router.push(
+                  `/crypto/${coin?.name.toLowerCase().replace(/ /g, '-')}`
+                )
               }
             >
               <td className="border-y border-slate-600 py-5 pl-3 text-left">
